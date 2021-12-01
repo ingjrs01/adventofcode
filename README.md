@@ -1,2 +1,4 @@
 # adventofcode
-advent of code
+
+En este repositorio iremos añadiendo los ejercicios del advent of code
+
