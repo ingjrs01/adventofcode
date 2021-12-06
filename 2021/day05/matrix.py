@@ -22,7 +22,7 @@ class Matrix:
         return s
 
     def add_line(self,line):
-        points = line.calc_points()
+        points = line.calc_points_i()
         for point in points:
             self.data[point[0]][point[1]] += 1
 
