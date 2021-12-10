@@ -1,6 +1,6 @@
 def load():
     matrix = []
-    lines = [ line.strip() for line in open('real','r').readlines()]
+    lines = [ line.strip() for line in open('input','r').readlines()]
 
     for line in lines:
         row = []
@@ -15,30 +15,111 @@ def count_occupied(pos,matrix):
     x,y = pos
     if (x > 0): # Puedo mirar la fila superior
         if (y > 0):
-            if (matrix[x-1][y-1]=="#"):
-                total += 1
+            i = x
+            j = y
+            salir = False
+            while not salir: 
+                # Mirar toda la diagonal
+                i -= 1
+                j -= 1
+                if (i >= 0 and j >= 0):
+                    if (matrix[i][j]=="#"):
+                        salir = True
+                        total += 1
+                else:
+                    salir = True
+        # Diagonal derecha
         if (y < len(matrix[x])-1):
-            if (matrix[x-1][y+1]=="#"):
-                total += 1
-        if (matrix[x-1][y]=="#"):
-            total += 1
+            i = x
+            j = y
+            salir = False
+            while not salir: 
+                i -= 1
+                j += 1
+                if (i >= 0 and j < len(matrix[i])):
+                    if (matrix[i][j]=="#"):
+                        salir = True
+                        total += 1
+                else:
+                    salir = True
+        # Vertical arriba
+        i = x
+        j = y
+        salir = False
+        while not salir: 
+            i -= 1
+            if (i >= 0):
+                if (matrix[i][j]=="#"):
+                    salir = True
+                    total += 1
+            else:
+                salir = True
     # Miro la fila de abajo
     if (x < len(matrix)-1):
-        if (y>0):
-            if (matrix[x+1][y-1]=="#"):
-                total += 1
-        if (y < len(matrix[x])-1):
-            if (matrix[x+1][y+1]=="#"):
-                total += 1
-        if (matrix[x+1][y]=="#"):
-            total += 1
-    # Miro la fila actual
+        if (y>0): #Diagonal abajo izquierda
+            i = x
+            j = y
+            salir = False
+            while not salir:
+                i += 1
+                j -= 1
+                if (i < len(matrix) and j >= 0):                    
+                    if (matrix[i][j]=="#"):
+                        salir = True
+                        total += 1
+                else:
+                    salir = True
+
+        if (y < len(matrix[x])-1): # Diagonal abajo derecha
+            i = x
+            j = y
+            salir = False
+            while not salir: 
+                i += 1
+                j += 1
+                if (i < len(matrix) and j < len(matrix[i])):
+                    if (matrix[i][j]=="#"):
+                        salir = True
+                        total += 1
+                else:
+                    salir = True
+        #Hacia abajoa
+        i = x
+        j = y
+        salir = False
+        while not salir:
+            i += 1
+            if (i < len(matrix)):
+                if (matrix[i][y]=="#"):
+                    salir = True
+                    total += 1
+            else:
+                salir = True
+
+    # Miro a la izquierda
     if (y > 0):
-        if (matrix[x][y-1]=="#"):
-            total += 1
+        j = y
+        salir = False
+        while not salir:
+            i -= 1
+            if (i >= 0):
+                if (matrix[x][i]=="#"):
+                    salir = True
+                    total += 1
+            else:
+                salir = True
+    # Miro a la derecha
     if (y < len(matrix[x])-1):
-        if (matrix[x][y+1]=="#"):
-            total += 1
+        j = y
+        salir = False
+        while not salir:
+            j += 1
+            if (j < len(matrix[x])):
+                if (matrix[x][j]=="#"):
+                    salir = True
+                    total += 1
+            else:
+                salir = True
     return total
 
 def step(matrix):
@@ -52,7 +133,7 @@ def step(matrix):
             if (matrix[i][j] == "L" and c == 0):
                 item = "#"
                 cambios += 1
-            if (matrix[i][j] == "#" and c >= 4):
+            if (matrix[i][j] == "#" and c >= 5):
                 item = "L"
                 cambios += 1
 
@@ -68,9 +149,16 @@ def total_occupied(matrix):
                 total += 1
     return total
 
+def main2():
+    matrix = load()
+    cambios = 10
+    while (cambios > 0):
+        cambios,matrix = step(matrix)
+        print(total_occupied(matrix))
+        print("********************************************")
+        print(matrix)
 
 matrix = load()
-cambios = 10
-while (cambios > 0):
-    cambios,matrix = step(matrix)
-    print(total_occupied(matrix))
+print("probando otras cosas")
+print(count_occupied((3,3),matrix))
+main2()
