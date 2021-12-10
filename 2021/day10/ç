@@ -1,0 +1,12 @@
+def process_line(line):
+    stack = []
+    for i in range(len(line)):
+        print(line[i])
+
+
+
+lines = open('input','r').readlines()
+
+for line in lines: 
+    process_line(line)
+    print("************************************************************")
