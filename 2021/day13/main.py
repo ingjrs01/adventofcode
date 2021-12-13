@@ -45,7 +45,7 @@ def plegar_y(data,p):
         row = []
         for j in range(len(data[0])):
             k = (tam - (1 + i)) 
-            #print(f"Juntarlo con ({i},{j})= {data[i][j]} con {k},{j} = {data[k][j]}")
+            print(f"Juntarlo con ({i},{j})= {data[i][j]} con {k},{j} = {data[k][j]}")
             row.append(data[i][j] or data[k][j])
         tmp.append(row)
 
@@ -72,9 +72,19 @@ def plegar_x(data,p):
     return (tmp)
 
 
-data = load('input2')
-data = plegar_x(data,655)
-data = plegar_y(data,447)
+data = load('input')
+data = plegar_y(data,8)
+#data = plegar_x(data,5)
+print("And de winner is")
+for i in data:
+    for j in i:
+        if (j):
+            print("#",end="")
+        else:
+            print(".",end="")
+    print("")
+#data = plegar_x(data,655)
+#data = plegar_y(data,447)
 
 contar = 0
 for i in data:
@@ -84,7 +94,7 @@ for i in data:
 
 
 print(contar)
-
+exit(0)
 data = plegar_x(data,327)
 data = plegar_y(data,223)
 data = plegar_x(data,163)
@@ -102,5 +112,5 @@ for i in data:
         if (j):
             print("#",end="")
         else:
-            print(".",end=".")
+            print(".",end="")
     print("")
