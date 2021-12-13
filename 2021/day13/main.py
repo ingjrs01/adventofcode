@@ -27,34 +27,33 @@ def load(filename):
         for j in range(max_x):
             row.append(False)
         data.append(row)
-    #print(data)
 
     for c in coords:
         # print(f"Coordenadas: ({c[1]},{c[0]})")
         data[c[1]][c[0]] = True
 
-    for i in range(max_y):
-        print(data[i])
     return data
 
 def plegar_y(data,p):
     tmp = []
-    tam = len(data)
-    print("Plegando en Y")
     for i in range(p):
         row = []
         for j in range(len(data[0])):
-            k = (tam - (1 + i)) 
-            print(f"Juntarlo con ({i},{j})= {data[i][j]} con {k},{j} = {data[k][j]}")
-            row.append(data[i][j] or data[k][j])
+            row.append(data[i][j])
         tmp.append(row)
 
-    #for i in range(p):
-    #    print(tmp[i])
-    return tmp
+    k = p
+    for i in range(p-1,-1,-1):
+        k += 1
+        tt = len(data)
+        if (k >= len(data)):
+            break
+        for j in range(len(data[0])):
+            tmp[i][j] = data[i][j] or data[k][j]
+
+    return (tmp)
 
 def plegar_x(data,p):
-    print("Plegando en X")
     tmp = []
     tam = len(data[0])
     for i in range(len(data)):
@@ -62,29 +61,18 @@ def plegar_x(data,p):
         for j in range(p):
             k = (tam - (1 + j))
 
-            #print(f"Accediendo a ({i},{j}): <{data[i][j]}> ({i},{k})")
             row.append(data[i][j] or data[i][k])
         tmp.append(row)
 
-    #for i in range(len(data)):
-    #    print(tmp[i])
 
     return (tmp)
 
 
-data = load('input')
-data = plegar_y(data,8)
+data = load('input2')
+#data = plegar_y2(data,5)
 #data = plegar_x(data,5)
-print("And de winner is")
-for i in data:
-    for j in i:
-        if (j):
-            print("#",end="")
-        else:
-            print(".",end="")
-    print("")
-#data = plegar_x(data,655)
-#data = plegar_y(data,447)
+data = plegar_x(data,655)
+data = plegar_y(data,447)
 
 contar = 0
 for i in data:
@@ -94,7 +82,6 @@ for i in data:
 
 
 print(contar)
-exit(0)
 data = plegar_x(data,327)
 data = plegar_y(data,223)
 data = plegar_x(data,163)
