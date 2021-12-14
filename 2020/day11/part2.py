@@ -1,6 +1,6 @@
 def load():
     matrix = []
-    lines = [ line.strip() for line in open('input','r').readlines()]
+    lines = [ line.strip() for line in open('real','r').readlines()]
 
     for line in lines:
         row = []
@@ -26,6 +26,8 @@ def count_occupied(pos,matrix):
                     if (matrix[i][j]=="#"):
                         salir = True
                         total += 1
+                    if (matrix[i][j]=="L"):
+                        salir = True
                 else:
                     salir = True
         # Diagonal derecha
@@ -40,6 +42,7 @@ def count_occupied(pos,matrix):
                     if (matrix[i][j]=="#"):
                         salir = True
                         total += 1
+                    if (matrix[i][j]=="L"):salir=True
                 else:
                     salir = True
         # Vertical arriba
@@ -52,6 +55,7 @@ def count_occupied(pos,matrix):
                 if (matrix[i][j]=="#"):
                     salir = True
                     total += 1
+                if (matrix[i][j]=="L"):salir=True
             else:
                 salir = True
     # Miro la fila de abajo
@@ -67,6 +71,7 @@ def count_occupied(pos,matrix):
                     if (matrix[i][j]=="#"):
                         salir = True
                         total += 1
+                    if (matrix[i][j]=="L"):salir=True
                 else:
                     salir = True
 
@@ -81,6 +86,7 @@ def count_occupied(pos,matrix):
                     if (matrix[i][j]=="#"):
                         salir = True
                         total += 1
+                    if (matrix[i][j]=="L"):salir=True
                 else:
                     salir = True
         #Hacia abajoa
@@ -93,12 +99,13 @@ def count_occupied(pos,matrix):
                 if (matrix[i][y]=="#"):
                     salir = True
                     total += 1
+                if (matrix[i][y]=="L"): salir = True
             else:
                 salir = True
 
     # Miro a la izquierda
     if (y > 0):
-        j = y
+        i = y
         salir = False
         while not salir:
             i -= 1
@@ -106,6 +113,7 @@ def count_occupied(pos,matrix):
                 if (matrix[x][i]=="#"):
                     salir = True
                     total += 1
+                if (matrix[x][i]=="L"):salir=True
             else:
                 salir = True
     # Miro a la derecha
@@ -118,6 +126,7 @@ def count_occupied(pos,matrix):
                 if (matrix[x][j]=="#"):
                     salir = True
                     total += 1
+                if (matrix[x][j]=="L"): salir=True
             else:
                 salir = True
     return total
@@ -149,16 +158,14 @@ def total_occupied(matrix):
                 total += 1
     return total
 
-def main2():
-    matrix = load()
-    cambios = 10
-    while (cambios > 0):
-        cambios,matrix = step(matrix)
-        print(total_occupied(matrix))
-        print("********************************************")
-        print(matrix)
+def imprimir(matrix):
+    for l in matrix:
+        print(l)
 
 matrix = load()
-print("probando otras cosas")
-print(count_occupied((3,3),matrix))
-main2()
+cambios = 1
+while (cambios > 0):
+    cambios,matrix = step(matrix)
+    #imprimir(matrix)
+
+print(total_occupied(matrix))
