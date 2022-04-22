@@ -1,0 +1,64 @@
+{
+  "st_mtime": 1571290657.0,
+  "path": "/usr/local/bin/python3.8",
+  "content": {
+    "platform": "linux",
+    "implementation": "CPython",
+    "version_info": {
+      "major": 3,
+      "minor": 8,
+      "micro": 0,
+      "releaselevel": "final",
+      "serial": 0
+    },
+    "architecture": 64,
+    "version": "3.8.0 (default, Oct 17 2019, 05:36:36) \n[GCC 8.3.0]",
+    "os": "posix",
+    "prefix": "/usr/local",
+    "base_prefix": "/usr/local",
+    "real_prefix": null,
+    "base_exec_prefix": "/usr/local",
+    "exec_prefix": "/usr/local",
+    "executable": "/usr/local/bin/python3.8",
+    "original_executable": "/usr/local/bin/python3.8",
+    "system_executable": "/usr/local/bin/python3.8",
+    "has_venv": true,
+    "path": [
+      "/root/Day06/lib/python3.8/site-packages/virtualenv/discovery",
+      "/usr/local/lib/python38.zip",
+      "/usr/local/lib/python3.8",
+      "/usr/local/lib/python3.8/lib-dynload",
+      "/usr/local/lib/python3.8/site-packages"
+    ],
+    "file_system_encoding": "utf-8",
+    "stdout_encoding": "utf-8",
+    "sysconfig_paths": {
+      "stdlib": "{installed_base}/lib/python{py_version_short}",
+      "platstdlib": "{platbase}/lib/python{py_version_short}",
+      "purelib": "{base}/lib/python{py_version_short}/site-packages",
+      "platlib": "{platbase}/lib/python{py_version_short}/site-packages",
+      "include": "{installed_base}/include/python{py_version_short}{abiflags}",
+      "scripts": "{base}/bin",
+      "data": "{base}"
+    },
+    "sysconfig_vars": {
+      "platbase": "/usr/local",
+      "abiflags": "",
+      "PYTHONFRAMEWORK": "",
+      "py_version_short": "3.8",
+      "installed_base": "/usr/local",
+      "base": "/usr/local"
+    },
+    "distutils_install": {
+      "purelib": "lib/python3.8/site-packages",
+      "platlib": "lib/python3.8/site-packages",
+      "headers": "include/python3.8/UNKNOWN",
+      "scripts": "bin",
+      "data": ""
+    },
+    "system_stdlib": "/usr/local/lib/python3.8",
+    "system_stdlib_platform": "/usr/local/lib/python3.8",
+    "max_size": 9223372036854775807,
+    "_creators": null
+  }
+}
